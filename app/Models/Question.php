@@ -9,6 +9,8 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function exam() {
         return $this->belongsTo(Exam::class);
     }

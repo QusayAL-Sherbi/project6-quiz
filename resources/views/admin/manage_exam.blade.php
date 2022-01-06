@@ -18,7 +18,7 @@
 
                                         <div class="card-header">Manage Exam</div>
                                         <div class="card-body card-block">
-                                            <form action="{{route('exam.store')}}" method="post" enctype="multipart/form-data">
+                                            <form action="@if ($is_update == false) {{route('exam.store')}} @else {{route('exam.update', $exam->id)}} @endif" method="post" enctype="multipart/form-data">
                                                 @csrf
 
                                                 <div class="form-group">
@@ -28,7 +28,7 @@
                                                         </div>
                                                         <input type="text" id="exam_title" name="exam_name"
                                                             class="form-control" placeholder="exam title"
-                                                            value="">
+                                                            value="@if ($is_update == true) {{ $exam->exam_name }} @endif">
                                                     </div>
                                                 </div>
 
@@ -47,14 +47,19 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-plus"></i>
                                                         </div>
-                                                        <input type="number" id="exam_questions" name="exam_number_of_questions"
-                                                            class="form-control" placeholder="number of questions"
-                                                            value="">
+                                                        <input type="number" id="exam_number_of_questions" name="exam_number_of_questions"
+                                                            class="form-control" placeholder="exam Number Of Questions"
+                                                            value="@if ($is_update == true) {{ $exam->exam_number_of_questions }} @endif">
                                                     </div>
                                                 </div>
                                                 <div class="form-actions form-group d-flex justify-content-end">
+                                                    @if ($is_update == false)
                                                         <button type="submit" name="add_exam" class="btn btn-primary btn-md"
                                                             style="background: #4272d7;">Add Exam </button>
+                                                    @else
+                                                    <button type="submit" name="add_exam" class="btn btn-primary btn-md"
+                                                    style="background: #4272d7;">Update </button>
+                                                    @endif
                                                 </div>
                                             </form>
                                         </div>
@@ -86,7 +91,7 @@
 
                                                     <td>
                                                         <div class="table-data-feature d-flex justify-content-end">
-                                                            <a href=""> <button
+                                                            <a href="{{ route('exam.edit', $exam->id) }}"> <button
                                                                     class="item btn btn-success" data-toggle="tooltip"
                                                                     data-placement="top" title="Edit">
                                                                     <i class="zmdi zmdi-edit"></i></a>

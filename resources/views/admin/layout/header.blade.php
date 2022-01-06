@@ -326,7 +326,7 @@
                                 <i class="fas fa-calendar-alt"></i>Manage Exams</a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('question') }}">
                                 <i class="fas fa-map-marker-alt"></i>Manage Questions</a>
                         </li>
 

@@ -14,9 +14,11 @@ class ExamController extends Controller
      */
     public function index()
     {
+        $is_update = false;
+
         $exams = Exam::all();
 
-        return view('admin.manage_exam', compact('exams'));
+        return view('admin.manage_exam', compact('exams', 'is_update'));
     }
 
     /**
@@ -78,9 +80,15 @@ class ExamController extends Controller
      * @param  \App\Models\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function edit(Exam $exam)
+    public function edit(Exam $exam, $id)
     {
-        //
+        $is_update = true;
+
+        $exam = Exam::find($id);
+
+        $exams = Exam::all();
+
+        return view('admin.manage_exam', compact('exams', 'exam', 'is_update'));
     }
 
     /**
@@ -90,9 +98,17 @@ class ExamController extends Controller
      * @param  \App\Models\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exam $exam)
+    public function update(Request $request, Exam $exam, $id)
     {
-        //
+        $exam = Exam::find($id);
+
+        $exam->exam_name = $request->exam_name;
+
+        $exam->exam_number_of_questions = $request->exam_number_of_questions;
+
+        $exam->update();
+
+        return redirect()->back();
     }
 
     /**
