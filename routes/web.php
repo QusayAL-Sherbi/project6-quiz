@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/admin', function () {
-//     return view('admin.manage_exam');
-// });
+Route::get('/home', function () {
+    return view('public.index');
+})->name('home');
 
 Route::post('/exam', [ExamController::class, 'store'])->name('exam.store');
 
@@ -42,3 +43,9 @@ Route::post('/update/{id}', [ExamController::class, 'update'])->name('exam.updat
 Route::post('/question_update/{id}', [QuestionController::class, 'update'])->name('question.update');
 
 Route::post('/question_store', [QuestionController::class, 'store'])->name('question.store');
+
+Route::get('/all_exams', [ExamController::class, 'show'])->name('exams');
+
+Route::get('/single_exam/{id}', [QuestionController::class, 'public_show'])->name('single_exam');
+
+Route::post('/result/{id}', [ResultController::class, 'store'])->name('result');

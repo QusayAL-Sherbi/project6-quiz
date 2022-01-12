@@ -72,6 +72,15 @@ class QuestionController extends Controller
         return view('admin.manage_question', compact('questions', 'is_update'));
     }
 
+    public function public_show(Question $question, $id)
+    {
+        $questions = Question::all();
+
+        $exam = Exam::find($id);
+
+        return view('public.quiz', compact('questions', 'exam'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -101,15 +110,15 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question, $id)
     {
         $question = Question::find($id);
-        $question->question_number=$request->question_number;
-        $question->question_text=$request->question_text;
-        $question->question_points=$request->question_points;
-        $question->option_one=$request->option_one;
-        $question->option_two=$request->option_two;
-        $question->option_three=$request->option_three;
-        $question->option_four=$request->option_four;
-        $question->correct_answer=$request->correct_answer;
-        $question->exam_id=$request->exam_id;
+        $question->question_number = $request->question_number;
+        $question->question_text = $request->question_text;
+        $question->question_points = $request->question_points;
+        $question->option_one = $request->option_one;
+        $question->option_two = $request->option_two;
+        $question->option_three = $request->option_three;
+        $question->option_four = $request->option_four;
+        $question->correct_answer = $request->correct_answer;
+        $question->exam_id = $request->exam_id;
 
         $question->update();
 

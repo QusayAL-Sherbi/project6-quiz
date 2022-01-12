@@ -71,7 +71,10 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        //
+
+        $exams = Exam::all();
+
+        return view('public.exams', compact('exams'));
     }
 
     /**

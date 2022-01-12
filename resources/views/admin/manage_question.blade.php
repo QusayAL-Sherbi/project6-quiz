@@ -146,10 +146,7 @@
                                                     <th>Question Number</th>
                                                     <th>Question Text</th>
                                                     <th>Question Points</th>
-                                                    <th>Option One</th>
-                                                    <th>Option Two</th>
-                                                    <th>Option Three</th>
-                                                    <th>Option Four</th>
+                                                    <th>Options</th>
                                                     <th>Correct Answer</th>
                                                     <th>Exam Title</th>
                                                     <th></th>
@@ -162,7 +159,7 @@
                                                     <td>{{ $question->id }}</td>
                                                     <td>{{ $question->question_number }}</td>
                                                     <td>{{ $question->question_text }}</td>
-                                                    <td>{{ $question->question_ponits }}</td>
+                                                    <td>{{ $question->question_points }}</td>
                                                     <td>
                                                         <ul>
                                                             <li>{{ $question->option_one }}</li>

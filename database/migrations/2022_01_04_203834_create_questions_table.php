@@ -24,7 +24,7 @@ class CreateQuestionsTable extends Migration
             $table->text('option_four');
             $table->text('correct_answer');
             $table->foreignId('exam_id')->unsigned()->references('id')->on('exams')->onDelete('cascade');
-            $table->foreignId('user_id')->unsigned()->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->unsigned()->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
